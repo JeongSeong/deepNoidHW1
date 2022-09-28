@@ -1,0 +1,42 @@
+git bash 터미널에 적는것. 한글은 변수.
+
+git config --global user.name'깃헙아이디'
+git config --global user.email'깃헙가입메일주소'
+git config --global core.autocrlf true
+
+깃헙에 로그인 하고, 우측 상단 계정아이콘 눌러서 Settings -> Developer settings -> Personal access tokens
+에 가서 personal access token을 새로 만든다. 
+Note에 토큰 이름 지어준다. 
+Select scopes 체크박스 있는곳에서 
+workflow, write:packages, delete:packages, admin:org, admin:gpg_key 에다가 체크를 해준 후
+generate token 버튼을 누르면
+토큰을 복사할 수 있게 보여주는데, 이걸 어딘가 저장해놓는다.
+
+깃헙 저장소를 복사하여 작업할 디렉토리로 이동 (cd 명령어 사용)
+다시 터미널로 돌아와서 remote repository를 local에 복사한다.
+git clone https://깃헙아이디:생성한토큰@저장소도메인이후주소
+
+복사한 깃헙 저장소 디렉토리로 또 이동하면, 위치에 (main)이 뜰 것이다.
+test-branch라는 브랜치를 만들고 그 곳으로 이동하려면
+git checkout -b test-branch
+라고 쓰면 되고, 다시 main브랜치로 오려면
+git checkout main
+이라고 쓰면 된다.
+test-branch를 지우고 싶으면
+git branch -d test-branch
+라고 쓰면 된다.
+
+instructions라는 텍스트 파일을 만들어서 열려면
+vim instructions.txt
+라고 친 다음에, 입력하려면 i를 눌러서 insert모드로 진입한다.
+파일을 저장하고 닫고싶으면, Esc를 누른 후 :wq라고 치고 엔터 누르면 된다.
+
+생성한 파일을 track해서 staged로 만들고 싶으면
+git add instructions.txt
+라고 쓰면 된다.
+변경사항들을 모두 저장하고 commit 버전 기록을 남기려면
+git commit -m "커밋이름"
+이라고 쓰면 된다.
+이제main브랜치에서 작업한걸 origin(원격저장소주소 복제해놓은 변수)에 올리려면
+git push origin main
+이라고 쓰면 된다.
